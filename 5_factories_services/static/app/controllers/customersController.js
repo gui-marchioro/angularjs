@@ -1,7 +1,8 @@
-app.controller('CustomersController', function ($scope, customersService) {
+app.controller('CustomersController', function ($scope, customersService, appSettings) {
     $scope.sortBy = 'name';
     $scope.reverse = false;
     $scope.customers = [];
+    $scope.appSettings = appSettings;
 
     function init() {
         $scope.customers = customersService.getCustomers();
