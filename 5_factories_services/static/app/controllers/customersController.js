@@ -5,7 +5,13 @@ app.controller('CustomersController', function ($scope, customersService, appSet
     $scope.appSettings = appSettings;
 
     function init() {
-        $scope.customers = customersService.getCustomers();
+        customersService.getCustomers()
+            .then(function(customers) {
+                $scope.customers = customers.data;
+            })
+            .catch(function(data, status, headers, config) {
+                // handle error
+            });
     };
 
     init();
