@@ -1,4 +1,4 @@
-app.controller('OrdersController', function ($scope, $routeParams, customersService) {
+app.controller('OrdersController', function ($scope, $routeParams, $log, customersService) {
     var customerId = $routeParams.customerId;
     $scope.customer = null;
 
@@ -8,7 +8,7 @@ app.controller('OrdersController', function ($scope, $routeParams, customersServ
                 $scope.customer = customer.data;
             })
             .catch(function(data, status, headers, config) {
-                // handle error
+                $log.log('Status: ' + status + ', ' + data.error);
             });
     }
 

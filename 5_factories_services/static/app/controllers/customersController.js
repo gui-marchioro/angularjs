@@ -1,4 +1,4 @@
-app.controller('CustomersController', function ($scope, customersService, appSettings) {
+app.controller('CustomersController', function ($scope, $log, customersService, appSettings) {
     $scope.sortBy = 'name';
     $scope.reverse = false;
     $scope.customers = [];
@@ -10,7 +10,7 @@ app.controller('CustomersController', function ($scope, customersService, appSet
                 $scope.customers = customers.data;
             })
             .catch(function(data, status, headers, config) {
-                // handle error
+                $log.log('Status: ' + status + ', ' + data.error);
             });
     };
 
